@@ -1,0 +1,580 @@
+.admin-dashboard {
+    padding: 40px;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f8f9fc;
+    color: #222;
+    line-height: 1.6;
+  }
+  
+  .admin-title {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #0F52BA;
+    font-size: 2.3rem;
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+  
+  .admin-dashboard .dashboard-section {
+    margin-bottom: 60px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 28px 28px 28px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+    border: 1px solid #e6eaf1;
+    position: relative;
+    line-height: 1.6;
+  }
+  
+  .admin-dashboard .dashboard-section:not(:last-child)::after {
+    content: '';
+    display: block;
+    height: 18px;
+    background: transparent;
+    border-bottom: 1.5px dashed #e6eaf1;
+    margin: 32px 0 0 0;
+  }
+  
+  .admin-dashboard .dashboard-section h2 {
+    font-size: 1.7rem;
+    margin-bottom: 22px;
+    color: #009B77;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    line-height: 1.3;
+  }
+  
+  .admin-dashboard .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+  
+  .admin-dashboard .data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  
+  .admin-dashboard .data-card {
+    background: #f4f7fb;
+    border-radius: 12px;
+    padding: 22px 18px 18px 18px;
+    min-height: 269px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s cubic-bezier(.4,2,.6,1);
+    border: 1.5px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+
+  .scrollable-grid{
+    height: 85vh;
+    overflow-y: auto;
+  }
+  
+  .card-actions {
+    display: flex;
+    justify-content: start;
+    gap: 1.2rem;
+    margin-top: 10px;
+  }
+  
+  .admin-dashboard button {
+    background: linear-gradient(90deg, #0F52BA, #009B77);
+    color: white;
+    padding: 11px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    transition: background 0.3s, box-shadow 0.2s, transform 0.15s;
+    box-shadow: 0 2px 8px rgba(15,82,186,0.07);
+    outline: none;
+    display: inline-block;
+  }
+  
+  .admin-dashboard button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  
+  .card-actions button {
+    margin-right: 10px;
+  }
+  
+  .card-actions button:last-child {
+    margin-right: 0;
+  }
+  
+  /* 🎟️ Ticket Table */
+  .ticket-table-wrapper {
+    overflow-x: auto;
+    margin-top: 1.2rem;
+  }
+  
+  .ticket-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border: 1.5px solid #e0e0e0;
+    font-size: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 0;
+  }
+  
+  .ticket-table th,
+  .ticket-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: left;
+    line-height: 1.5;
+  }
+  
+  .ticket-table th {
+    background: #eaf1fb;
+    color: #0F52BA;
+    font-weight: 700;
+    font-size: 1.08rem;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+  
+  .ticket-table tr:nth-child(even) td {
+    background: #f7fafc;
+  }
+  
+  .ticket-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  /* 🎯 Badge Styles */
+  .badge {
+    padding: 6px 12px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-block;
+    letter-spacing: 0.2px;
+  }
+  
+  .badge.success {
+    background: #d1e942;
+    color: #000;
+  }
+  
+  .badge.danger {
+    background: #f53e3e;
+    color: #fff;
+  }
+  
+  .badge.warning {
+    background: #ff9800;
+    color: #fff;
+  }
+  
+  /* Cancel Button in Table */
+  .ticket-table .danger {
+    background: #f53e3e;
+    border: none;
+    color: white;
+    padding: 7px 14px;
+    border-radius: 7px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    transition: background 0.3s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(245,62,62,0.07);
+    outline: none;
+    display: inline-block;
+  }
+  
+  .ticket-table .danger:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  
+  /* for modals */
+
+  /* Modal backdrop */
+.admin-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(20, 20, 20, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+  
+  /* Modal container */
+  .admin-modal-overlay .modal-box {
+    background-color: #fff;
+    padding: 2.5rem 2rem 2rem 2rem;
+    border-radius: 14px;
+    width: 95%;
+    max-width: 520px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+    animation: fadeInScale 0.3s ease-in-out;
+    margin: 0 auto;
+  }
+  
+  @keyframes fadeInScale {
+    from {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Modal title */
+  .admin-modal-overlay .modal-box h2 {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    color: #222;
+    text-align: center;
+  }
+  
+  /* Form layout */
+  .admin-modal-overlay .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .admin-modal-overlay .form-grid label {
+    font-size: 0.9rem;
+    color: #444;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Inputs */
+  .admin-modal-overlay .form-grid input {
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.2s;
+  }
+  
+  .admin-modal-overlay .form-grid input:focus {
+    outline: none;
+    border-color: #0f52ba;
+  }
+  
+  /* Modal actions */
+  .admin-modal-overlay  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+  
+  .admin-modal-overlay .modal-actions button {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .admin-modal-overlay .modal-actions button:first-of-type {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .admin-modal-overlay .modal-actions button:last-of-type {
+    background-color: #0f52ba;
+    color: #fff;
+  }
+  
+  .admin-modal-overlay .modal-actions button:hover {
+    opacity: 0.9;
+  }
+  /* admin login style */
+
+ .admin-login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to right, #0F52BA, #009B77);
+}
+
+.login-box {
+  background: white;
+  padding: 2.5rem 3rem;
+  border-radius: 15px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  width: 340px;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.login-box h2 {
+  margin-bottom: 1.5rem;
+  color: #0F52BA;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.login-box button {
+  background: linear-gradient(90deg, #0F52BA, #009B77);
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-box button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-msg {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Loader Animation */
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 3px solid white;
+  border-top: 3px solid #009B77;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 18px 0 0 0;
+}
+
+.pagination-controls button {
+  background: linear-gradient(90deg, #0F52BA, #009B77);
+  color: white;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pagination-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-controls span {
+  font-size: 1rem;
+  color: #0F52BA;
+  font-weight: 500;
+}
+
+/* --- Responsive Table Enhancements for AdminPanel --- */
+
+/* Ensure all table wrappers allow horizontal scroll on small screens */
+.ticket-table-wrapper,
+.admin-dashboard .ticket-table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+  position: relative;
+}
+
+/* Add a subtle scroll hint for mobile */
+@media (max-width: 900px) {
+  .ticket-table-wrapper::after {
+    content: '← Scroll →';
+    position: absolute;
+    right: 10px;
+    top: 2px;
+    font-size: 0.8em;
+    color: #b3c6e0;
+    pointer-events: none;
+    display: block;
+  }
+}
+
+/* Table font and cell adjustments for smaller screens */
+@media (max-width: 900px) {
+  .ticket-table {
+    font-size: 13px;
+    min-width: 600px;
+  }
+  .ticket-table th, .ticket-table td {
+    padding: 8px 6px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ticket-table {
+    font-size: 11px;
+    min-width: 480px;
+  }
+  .ticket-table th, .ticket-table td {
+    padding: 5px 3px;
+    font-size: 11px;
+    word-break: break-word;
+  }
+  .badge {
+    font-size: 11px;
+    padding: 4px 7px;
+  }
+  .admin-dashboard button,
+  .pagination-controls button,
+  .admin-modal-overlay .modal-actions button {
+    font-size: 0.85rem;
+    padding: 7px 10px;
+    border-radius: 6px;
+  }
+  .admin-modal-overlay .modal-box {
+    padding: 1rem 0.3rem 0.7rem 0.3rem;
+    border-radius: 7px;
+    max-width: 99vw;
+  }
+  .admin-modal-overlay .form-grid label {
+    font-size: 0.9rem;
+  }
+  .admin-modal-overlay .form-grid input,
+  .admin-modal-overlay .form-grid select,
+  .admin-modal-overlay .form-grid textarea {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.6rem;
+  }
+  /* Responsive ticket search input */
+  .admin-dashboard input[type="text"] {
+    width: 100% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+}
+
+/* Make dashboard sections and grids more flexible on small screens */
+@media (max-width: 900px) {
+  .admin-dashboard {
+    padding: 24px 2vw;
+  }
+  .admin-dashboard .dashboard-section {
+    padding: 18px 6px 16px 6px;
+  }
+  .admin-title {
+    font-size: 1.5rem;
+  }
+  .admin-dashboard .data-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .admin-dashboard .data-card {
+    margin-bottom: 16px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-dashboard {
+    padding: 8px 0.5vw;
+    font-size: 13px;
+  }
+  .admin-dashboard .dashboard-section {
+    padding: 10px 2px 8px 2px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .admin-dashboard .data-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .admin-dashboard .data-card {
+    padding: 8px 4px 6px 4px;
+    min-height: 229px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    box-sizing: border-box;
+    word-break: break-word;
+  }
+  .card-actions{
+    justify-content:center; 
+  }
+}
+@media (max-width: 480px) {
+.admin-dashboard .data-card {
+ 
+  min-height: 229px;
+}
+}
